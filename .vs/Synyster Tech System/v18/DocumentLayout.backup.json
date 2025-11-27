@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jordi\\Downloads\\Synyster Tech System\\Synyster Tech System\\",
+  "WorkspaceRootPath": "C:\\Users\\jordi\\Downloads\\ProyectoSanti\\Synyster-Tech-System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7043915F-D13F-4BFB-90E8-089DEF943654}|Synyster Tech System.csproj|c:\\users\\jordi\\downloads\\synyster tech system\\synyster tech system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7043915F-D13F-4BFB-90E8-089DEF943654}|Synyster Tech System.csproj|c:\\users\\jordi\\downloads\\proyectosanti\\synyster-tech-system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7043915F-D13F-4BFB-90E8-089DEF943654}|Synyster Tech System.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -14,21 +14,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\jordi\\Downloads\\Synyster Tech System\\Synyster Tech System\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\jordi\\Downloads\\ProyectoSanti\\Synyster-Tech-System\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\jordi\\Downloads\\Synyster Tech System\\Synyster Tech System\\Program.cs",
+              "ToolTip": "C:\\Users\\jordi\\Downloads\\ProyectoSanti\\Synyster-Tech-System\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAN0BAAAAAAAAAAAIwPoBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAA1wFgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-23T06:59:16.476Z",
               "EditorCaption": ""
