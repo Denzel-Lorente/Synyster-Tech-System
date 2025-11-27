@@ -9,25 +9,44 @@ namespace Synyster_Tech_System
 {
     internal class Program
     {
+        /*public struct Servicio
+        {
+            public string Cliente;
+            public string TipoServicio;
+            public string Descripcion;
+            public DateTime Fecha;
+        }*/
+        static List<string> listaClientes = new List<string>();
         static string[,] Clientes = new string[100, 5];
-        static string[,] Servicios = new string[50, 3];
+        static string[,] Servicios = new string[50, 4];
         static string[] Productos = new string[50];
         static double[] Precios = new double[50];
         static int ContadorProductos = 0;
         static int ContadorClientes = 0;
         static int ContadorServicios = 0;
+        static string[] ListaServiciosDisponibles = 
+        {
+        "Mantenimiento Preventivo",
+        "Reparación de PC / Laptop",
+        "instalación de Cámaras",
+        "Soporte Técnico Remoto",
+        "Optimización / Instalación de Software"
+        };
+        
 
         static void Main(string[] args)
         {
+            Console.Title = "Bienvenido a Synyster Tech System";
+            Console.Clear();
             MenuPrincipal();
-            RegistrarCliente();
+            /*RegistrarCliente();
             VerClientes();
-            BuscarCliente();
+            BuscarCliente();*/
         }
 
         static void MenuPrincipal()
         {
-            int Opcion;
+            String Opcion;
             do
             {
                 Console.Clear();
@@ -45,22 +64,17 @@ namespace Synyster_Tech_System
                 Console.WriteLine("\n========================================");
                 Console.Write("\nIngrese una opción: ");
 
-                if (!int.TryParse(Console.ReadLine(), out Opcion))
-                {
-                    Console.WriteLine("Opción inválida.");
-                    Console.ReadKey();
-                    continue;
-                }
+                Opcion = Console.ReadLine().ToUpper();
 
                 switch (Opcion)
                 {
-                    case 1: RegistrarCliente(); break;
-                    case 2: VerClientes(); break;
-                    case 3: BuscarCliente(); break;
-                    case 4: RegistrarServicio(); break;
-                    case 5: MenuServicios(); break;
-                    case 6: MenuProductos(); break;
-                    case 7: Console.WriteLine("Salindo del sistema... ¡Gracias por usar Synyster Tech System!");
+                    case "1": RegistrarCliente(); break;
+                    case "2": VerClientes(); break;
+                    case "3": BuscarCliente(); break;
+                    case "4": RegistrarServicio(); break;
+                    case "5": MenuServicios(); break;
+                    case "6": MenuProductos(); break;
+                    case "7": Console.WriteLine("Salindo del sistema... ¡Gracias por usar Synyster Tech System!");
                         Environment.Exit(0);
                         break;
                     default: Console.WriteLine("Opción no válida.");
@@ -74,7 +88,7 @@ namespace Synyster_Tech_System
         static void RegistrarCliente()
         {
             Console.Clear();
-            Console.WriteLine("=== Registrar CLiente ===");
+            Console.WriteLine("=== Registrar Cliente ===");
 
             if (ContadorClientes >= Clientes.GetLength(0))
             {
@@ -82,21 +96,6 @@ namespace Synyster_Tech_System
                 Console.ReadKey();
                 return;
             }
-
-            /*Console.Write("Nombres: ");
-            string Nombres = Console.ReadLine();
-
-            Console.Write("Apellidos: ");
-            string Apellidos = Console.ReadLine();
-
-            Console.Write("Número de Cédula: ");
-            string NumCedula = Console.ReadLine();
-
-            Console.Write("Teléfono: ");
-            string Telefono = Console.ReadLine();
-
-            Console.Write("Correo electrónico: ");
-            string Correo = Console.ReadLine();*/
 
             string Nombres;
             do
@@ -125,7 +124,7 @@ namespace Synyster_Tech_System
             do
             {
                 Console.Write("Número de cédula (sin espacios y agregue la letra del final): ");
-                NumCedula = Console.ReadLine()?.Trim();
+                NumCedula = Console.ReadLine()?.Trim().ToUpper();
                 if (string.IsNullOrEmpty(NumCedula))
                 {
                     Console.WriteLine("El número de cédula no puede estar vacío.");
@@ -227,7 +226,7 @@ namespace Synyster_Tech_System
             Console.Clear();
             Console.WriteLine("=== Buscar Cliente Mediante Cédula ===");
             Console.Write("Ingrese el número de cédula: ");
-            string NumCedula = Console.ReadLine()?.Trim();
+            string NumCedula = Console.ReadLine()?.Trim().ToUpper();
 
             if (string.IsNullOrWhiteSpace(NumCedula))
             {
@@ -262,7 +261,7 @@ namespace Synyster_Tech_System
             Console.WriteLine("\nSeleccione una opción:");
             Console.WriteLine("1. Editar cliente");
             Console.WriteLine("2. Eliminar cliente");
-            Console.WriteLine("3. Regresar al menú");
+            Console.WriteLine("3. Regresar al menú principal");
             Console.WriteLine("Opción: ");
 
             string Opcion = Console.ReadLine();
@@ -278,23 +277,6 @@ namespace Synyster_Tech_System
                 default:
                     return;
             }
-
-
-            /*for (int i = 0; i < ContadorClientes; i++)
-            {
-                
-
-                if (Clientes[i, 2] == NumCedula)
-                {
-                    Console.WriteLine($"Cliente encontrado: {Clientes[i, 0]} {Clientes[i, 1]}");
-                    Console.WriteLine($"Cédula: {Clientes[i, 2]}");
-                    Console.WriteLine($"Teléfono: {Clientes[i, 3]} | Correo: {Clientes[i, 4]}");
-                    Console.ReadKey();
-                    return;
-                }
-            }
-            Console.WriteLine("Cliente no encontrado.");
-            Console.ReadKey();*/
         }
         static void EditarCliente(int i)
         {
@@ -323,7 +305,7 @@ namespace Synyster_Tech_System
                     break;
                 case "3":
                     Console.Write("Nueva cédula: ");
-                    string NuevaCedula = Console.ReadLine()?.Trim();
+                    string NuevaCedula = Console.ReadLine()?.Trim().ToUpper();
                     if (!EsCedulaValida(NuevaCedula))
                     {
                         Console.WriteLine("Cédula inválida.");
@@ -360,7 +342,7 @@ namespace Synyster_Tech_System
 
         static void EliminarCliente(int index)
         {
-            Console.Write($"\n¿Seguro que desea eliminar este cliente? (S/N: )");
+            Console.Write($"\n¿Seguro que desea eliminar este cliente? (S/N): ");
             string Confirmar = Console.ReadLine();
             Confirmar = (Confirmar == null ? "" : Confirmar.Trim().ToUpper());
 
@@ -380,7 +362,280 @@ namespace Synyster_Tech_System
 
         //===== SERVICIOS =====
 
+        static void MenuServicios()
+        {
+            int opcion;
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("===== MENPU DE SERVICIOS =====\n");
+                Console.WriteLine("1. Registrar nuevo servicio");
+                Console.WriteLine("2. Ver lista de servicios registrados");
+                Console.WriteLine("3. Editar servicio");
+                Console.WriteLine("4. Eliminar servicio");
+                Console.WriteLine("5. Cambiar estado de servicio");
+                Console.WriteLine("6. Volver al menú principal\n");
+
+                Console.Write("Seleccione una opción: ");
+                int.TryParse(Console.ReadLine(), out opcion);
+
+                switch (opcion)
+                {
+                    case 1:
+                        RegistrarServicio();
+                        break;
+                    case 2:
+                        VerServicios();
+                        break;
+                    case 3:
+                        EditarServicio();
+                        break;
+                    case 4:
+                        EliminarServicio();
+                        break;
+                    case 5:
+                        CambiarEstadoServicio();
+                        break;
+                    case 6:
+                        Console.WriteLine("\nRegresando...");
+                        break;
+                    default:
+                        Console.WriteLine("\nOpción inválida.");
+                        break;
+                }
+
+                Console.WriteLine("\nPresione una tecla para continuar...");
+                Console.ReadKey();
+            }
+
+            while (opcion != 6);
+        }
+
         static void RegistrarServicio()
+        {
+            Console.Clear();
+            Console.WriteLine("===== REGISTRAR NUEVO SERVICIO =====");
+
+            string cliente = SeleccionarCliente();
+            if (cliente == "No registrado") return;
+
+            string TipoServicio = SeleccionarTipoServicio();
+
+            Console.Write("\nDescripción breve (opcional): ");
+            string descripcion = Console.ReadLine();
+
+            Servicios[ContadorServicios, 0] = cliente;
+            Servicios[ContadorServicios, 1] = TipoServicio;
+            Servicios[ContadorServicios, 2] = descripcion;
+            Servicios[ContadorServicios, 3] = "Pendiente";
+
+            ContadorServicios++;
+
+            Console.WriteLine("\n Servicio registrado exitosamente.");
+        }
+
+        static void VerServicios()
+        {
+            Console.Clear();
+            Console.WriteLine("===== LISTA DE SERVICIOS =====\n");
+
+            if (ContadorServicios == 0)
+            {
+                Console.WriteLine("No hay servicios registrados.");
+                return;
+            }
+
+            for (int i = 0;  i < ContadorServicios; i++)
+            {
+                Console.WriteLine($"{i + 1}. Cliente: {Servicios[i, 0]} | Servicio: {Servicios[i, 1]} | Estado: {Servicios[i, 3]}");
+            }
+        }
+
+        static void EditarServicio()
+        {
+            Console.Clear();
+            Console.WriteLine("===== EDITAR SERVICIO =====\n");
+
+            if (ContadorServicios == 0)
+            {
+                Console.WriteLine("No hay servicios registrados.");
+                return;
+            }
+
+            VerServicios();
+
+            Console.Write("\nSeleccione el número del servicio a editar: ");
+            int indice = Convert.ToInt32(Console.ReadLine());
+
+            if (indice < 0 || indice > ContadorServicios)
+            {
+                Console.WriteLine("Número inválido.");
+                return;
+            }
+
+            int opcion;
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine($"== Editando servicio de: {Clientes[indice, 0]} ==\n");
+                Console.WriteLine($"1. Cambiar cliente actual ({Clientes[indice, 0]})");
+                Console.WriteLine($"2. Cambiar tipo de servicio ({Servicios[indice, 1]})");
+                Console.WriteLine($"3. Editar descripción");
+                Console.WriteLine("4. Salir\n");
+
+                Console.Write("Seleccione una opción: ");
+                int.TryParse(Console.ReadLine(), out opcion);
+
+                switch (opcion)
+                {
+                    case 1:
+                        Servicios[indice, 0] = SeleccionarCliente();
+                        break;
+                    case 2:
+                        Servicios[indice, 1] = SeleccionarTipoServicio();
+                        break;
+                    case 3:
+                        Console.Write("\nNueva descripción: ");
+                        Servicios[indice, 2] = Console.ReadLine();
+                        break;
+                }
+            }
+            while (opcion != 4);
+
+            Console.WriteLine("\n Cambio guardado.");
+        }
+
+        static void EliminarServicio()
+        {
+            Console.Clear();
+            Console.WriteLine("===== ELIMINAR SERVICIO =====\n");
+
+            if (ContadorServicios == 0)
+            {
+                Console.WriteLine("No hay servicios registrados.");
+                return;
+            }
+
+            VerServicios();
+
+            Console.Write("\nSeleccione el número del servicio a eliminar: ");
+            int index = Convert.ToInt32(Console.ReadLine()) -1;
+
+            if (index < 0 || index >= ContadorServicios)
+            {
+                Console.WriteLine("Número inválido.");
+                return;
+            }
+
+            for (int i = index; i < ContadorServicios - 1; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Servicios[i, j] = Servicios[i + 1, j];
+                }
+            }
+
+            ContadorServicios--;
+
+            Console.WriteLine("\n Servicio eliminado correctamente.");
+        }
+
+        static void CambiarEstadoServicio()
+        {
+            Console.Clear();
+            Console.WriteLine("===== CAMBIAR ESTADI DEL SERVICIO =====\n");
+
+            if (ContadorServicios == 0)
+            {
+                Console.WriteLine("No hay servicios registrados.");
+                return;
+            }
+
+            VerServicios();
+
+            Console.Write("\nSeleccione el número del servicio: ");
+            int index = Convert.ToInt32(Console.ReadLine()) -1;
+
+            if (index <0 || index >= ContadorServicios)
+            {
+                Console.WriteLine("Número inválido.");
+                return;
+            }
+
+            Console.WriteLine("\nSeleccione el nuevo estado: ");
+            Console.WriteLine("1. Pendiente");
+            Console.WriteLine("2. En proceso");
+            Console.WriteLine("3. Finalizado");
+            Console.WriteLine("4. Cancelado");
+            Console.Write("\nOpción: ");
+
+            int estado = Convert.ToInt32(Console.ReadLine());
+
+            switch (estado)
+            {
+                case 1: Servicios[index, 3] = "Pendiente"; break;
+                case 2: Servicios[index, 3] = "En proceso"; break;
+                case 3: Servicios[index, 3] = "Finalizado"; break;
+                case 4: Servicios[index, 3] = "Cancelado"; break;
+                default:
+                    Console.WriteLine("\nOpción inválida.");
+                    return;
+            }
+
+            Console.WriteLine("\nEstado actualizado.");
+        }
+
+        //Seleccion de cliente existente o registrar nuevo
+
+        static string SeleccionarCliente()
+        {
+            Console.Clear();
+            Console.WriteLine("\n=== Seleccionar Cliente ===");
+
+            if (ContadorClientes == 0)
+            {
+                Console.WriteLine("No hay clientes registrados");
+                return "No registrado";
+            }
+
+            for (int i = 0; i < ContadorClientes; i++)
+            {
+                Console.WriteLine($"{i + 1}. {Clientes[i, 0]} {Clientes[i, 1]}");
+            }
+
+            Console.Write("\nSeleccione un cliente: ");
+            int index = Convert.ToInt32(Console.ReadLine()) - 1;
+
+            if (index < 0 || index >= ContadorClientes)
+            {
+                return "No registrado";
+            }
+            return $"{Clientes[index, 0]} {Clientes[index, 1]}";
+        }
+
+        static string SeleccionarTipoServicio()
+        {
+            Console.Clear();
+            Console.WriteLine("===== LISTA DE SERVICIOS DISPONIBLES =====");
+
+            for (int i = 0; i < ListaServiciosDisponibles.Length; i++)
+            {
+                Console.WriteLine($"{i + 1}. {ListaServiciosDisponibles[i]}");
+            }
+
+            Console.Write("\nSeleccione una opción: ");
+            int opcion = Convert.ToInt32(Console.ReadLine()) - 1;
+
+            if (opcion < 0 || opcion >= ListaServiciosDisponibles.Length)
+            {
+                return "Servicio desconocido";
+            }
+            return ListaServiciosDisponibles[opcion];
+        }
+
+      /*  static void RegistrarServicio()
         {
             Console.Clear();
             Console.WriteLine("===== REGISTRAR SERIVICIO =====");
@@ -506,7 +761,7 @@ namespace Synyster_Tech_System
                 Console.WriteLine("----------------------------");
             }
 
-            //Console.ReadKey();
+            Console.ReadKey();
         }
 
         static void EditarServicio()
@@ -661,7 +916,7 @@ namespace Synyster_Tech_System
 
             Console.WriteLine("\n Estado del servicio actualizado correctamente");
             Console.ReadLine();
-        }
+        }*/
 
         //Validacion de Datos:
         static bool EsCorreoValido(string Correo)
@@ -700,7 +955,10 @@ namespace Synyster_Tech_System
         {
             for (int i = 0; i < ContadorClientes; i++)
             {
-                if (Clientes[i, 2] == NumCedula) return true;
+                if (Clientes[i, 2].ToUpper() == NumCedula.ToUpper())
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -876,13 +1134,13 @@ namespace Synyster_Tech_System
             if (!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > ContadorProductos)
             {
                 Console.WriteLine("Opción inválida.");
-                Console.ReadKey();
+                //Console.ReadKey();
                 return;
             }
 
             index--;
 
-            Console.WriteLine($"\nProducto actual: {Productos[index]} -$ {Precios[index]: 0.00}");
+            Console.WriteLine($"\nProducto actual: {Productos[index]} - ${Precios[index]: 0.00}");
 
             Console.Write("\nNuevo nombre (dejar vacío para mantener): ");
             string NuevoNombre = Console.ReadLine().Trim();
