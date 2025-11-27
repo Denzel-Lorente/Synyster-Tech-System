@@ -1,0 +1,23 @@
+G:\Programacion\Synyster Tech System\bin\Debug\Synyster Tech System.exe.config
+G:\Programacion\Synyster Tech System\bin\Debug\Synyster Tech System.exe
+G:\Programacion\Synyster Tech System\bin\Debug\Synyster Tech System.pdb
+G:\Programacion\Synyster Tech System\obj\Debug\Synyster Tech System.csproj.AssemblyReference.cache
+G:\Programacion\Synyster Tech System\obj\Debug\Synyster Tech System.csproj.CoreCompileInputs.cache
+G:\Programacion\Synyster Tech System\obj\Debug\Synyster Tech System.exe
+G:\Programacion\Synyster Tech System\obj\Debug\Synyster Tech System.pdb
+G:\Programacion\Synyster Tech System\obj\Debug\Synyster Tech System.exe.config
+G:\Programacion\Proyectos\Synyster Tech System\bin\Debug\Synyster Tech System.exe.config
+G:\Programacion\Proyectos\Synyster Tech System\bin\Debug\Synyster Tech System.exe
+G:\Programacion\Proyectos\Synyster Tech System\bin\Debug\Synyster Tech System.pdb
+G:\Programacion\Proyectos\Synyster Tech System\obj\Debug\Synyster Tech System.csproj.AssemblyReference.cache
+G:\Programacion\Proyectos\Synyster Tech System\obj\Debug\Synyster Tech System.exe.config
+G:\Programacion\Proyectos\Synyster Tech System\obj\Debug\Synyster Tech System.csproj.CoreCompileInputs.cache
+G:\Programacion\Proyectos\Synyster Tech System\obj\Debug\Synyster Tech System.exe
+G:\Programacion\Proyectos\Synyster Tech System\obj\Debug\Synyster Tech System.pdb
+C:\Users\jordi\Downloads\Synyster Tech System\Synyster Tech System\bin\Debug\Synyster Tech System.exe.config
+C:\Users\jordi\Downloads\Synyster Tech System\Synyster Tech System\bin\Debug\Synyster Tech System.exe
+C:\Users\jordi\Downloads\Synyster Tech System\Synyster Tech System\bin\Debug\Synyster Tech System.pdb
+C:\Users\jordi\Downloads\Synyster Tech System\Synyster Tech System\obj\Debug\Synyster Tech System.csproj.AssemblyReference.cache
+C:\Users\jordi\Downloads\Synyster Tech System\Synyster Tech System\obj\Debug\Synyster Tech System.csproj.CoreCompileInputs.cache
+C:\Users\jordi\Downloads\Synyster Tech System\Synyster Tech System\obj\Debug\Synyster Tech System.exe
+C:\Users\jordi\Downloads\Synyster Tech System\Synyster Tech System\obj\Debug\Synyster Tech System.pdb
